@@ -37,6 +37,9 @@ describe("site pages", () => {
   it("renders the provided video assets into the redesigned pages", () => {
     expect(renderToStaticMarkup(<Home />)).toContain("CREATIVE_TECH_STUDENTS.mp4");
     expect(renderToStaticMarkup(<CreatorLab />)).toContain("Creative_Chaos.mp4");
+    expect(renderToStaticMarkup(<Impact />)).toContain("partner_impact.mp4");
+    expect(renderToStaticMarkup(<About />)).toContain("Founder.mp4");
+    expect(renderToStaticMarkup(<GetInvolved />)).toContain("getinvolved.mp4");
     expect(renderToStaticMarkup(<Stories />)).toContain("Student_Journey.mp4");
   });
 
@@ -59,6 +62,17 @@ describe("site pages", () => {
     expect(stories).toContain('data-stories-media="band"');
   });
 
+  it("renders the stories learner journey heading and removes the orphaned what changes panel", () => {
+    const stories = renderToStaticMarkup(<Stories />);
+
+    expect(stories).toContain("The Learner&#x27;s Journey");
+    expect(stories).toContain(
+      "Technology no longer feels distant or inaccessible. It becomes a tool for creativity, a platform for self-expression, and a way to shape what comes next.",
+    );
+    expect(stories).not.toContain("What Changes");
+    expect(stories).not.toContain("story-card");
+  });
+
   it("centers hero copy consistently on creator lab, stories, and impact", () => {
     expect(renderToStaticMarkup(<CreatorLab />)).toContain("page-hero-copy-centered");
     expect(renderToStaticMarkup(<Stories />)).toContain("page-hero-copy-centered");
@@ -72,5 +86,54 @@ describe("site pages", () => {
     expect(renderToStaticMarkup(<Stories />)).toContain("page-media-band-compact");
     expect(renderToStaticMarkup(<Impact />)).toContain("page-hero-compact");
     expect(renderToStaticMarkup(<Impact />)).toContain("page-media-band-compact");
+  });
+
+  it("routes the specified program learn more actions to prefilled email drafts", () => {
+    const programs = renderToStaticMarkup(<Programs />);
+
+    expect(programs).toContain(
+      "mailto:paolo@coreimmersive.com?subject=Interested%20in%20Learning%20More%20About%20Core%20Immersive%20Academy",
+    );
+    expect(programs).toContain(
+      "mailto:paolo@coreimmersive.com?subject=Interested%20in%20Learning%20More%20About%20Community%20Innovation%20Labs",
+    );
+    expect(programs).toContain(
+      "mailto:paolo@coreimmersive.com?subject=Interested%20in%20Learning%20More%20About%20Workshops%20%26%20Events",
+    );
+    expect(programs).toContain('href="/creator-lab"');
+  });
+
+  it("renders get involved with a dedicated full-width media band and no mentor note", () => {
+    const getInvolved = renderToStaticMarkup(<GetInvolved />);
+
+    expect(getInvolved).toContain('data-get-involved-media="band"');
+    expect(getInvolved).toContain("page-hero-copy-centered");
+    expect(getInvolved).toContain("page-hero-compact");
+    expect(getInvolved).toContain("page-media-band-compact");
+    expect(getInvolved).not.toContain("Dr. James McCoy");
+    expect(getInvolved).not.toContain("mentor-note");
+  });
+
+  it("renders about with a full-width media band and founder-only profile", () => {
+    const about = renderToStaticMarkup(<About />);
+
+    expect(about).toContain('data-about-media="band"');
+    expect(about).toContain("about-founder-layout");
+    expect(about).toContain("https://www.linkedin.com/in/paolonarciso/");
+    expect(about).not.toContain("James.jpeg");
+  });
+
+  it("renders the about join section with visible copy and a single get involved action", () => {
+    const about = renderToStaticMarkup(<About />);
+
+    expect(about).toContain('data-reveal-root="about-join"');
+    expect(about).toContain("about-join-band");
+    expect(about).toContain("Across classrooms, community spaces, and creative labs, we see the same moment again and again.");
+    expect(about).toContain("If you believe the future should be shaped by more voices, more ideas, and more creators, there is a place for you in this work.");
+    expect(about).toContain("Get Involved");
+    expect(about).not.toContain("Explore Programs");
+    expect(about.indexOf("If you believe the future should be shaped by more voices, more ideas, and more creators, there is a place for you in this work.")).toBeLessThan(
+      about.indexOf("about-join-actions"),
+    );
   });
 });

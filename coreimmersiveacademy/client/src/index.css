@@ -418,19 +418,25 @@
     object-position: center center;
   }
 
-  .impact-media-band {
+  .impact-media-band,
+  .about-media-band,
+  .get-involved-media-band {
     width: min(100%, 1600px);
     margin: 0 auto;
     padding: 0 1.5rem 3rem;
   }
 
-  .impact-media-frame {
+  .impact-media-frame,
+  .about-media-frame,
+  .get-involved-media-frame {
     width: 100%;
     border-radius: 0;
     border-inline: 0;
   }
 
-  .impact-media-frame .media-element {
+  .impact-media-frame .media-element,
+  .about-media-frame .media-element,
+  .get-involved-media-frame .media-element {
     object-position: center center;
   }
 
@@ -807,6 +813,18 @@
       rgba(16, 19, 27, 0.98);
   }
 
+  .about-join-band {
+    grid-template-columns: 1fr;
+  }
+
+  .about-join-copy {
+    max-width: 54rem;
+  }
+
+  .about-join-actions {
+    margin-top: 1.25rem;
+  }
+
   .story-timeline {
     display: flex;
     flex-direction: column;
@@ -849,6 +867,51 @@
     display: grid;
     gap: 1rem;
     padding: 2rem;
+  }
+
+  .about-founder-layout {
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+  }
+
+  .about-founder-card {
+    width: min(100%, 280px);
+    justify-self: start;
+  }
+
+  .about-founder-portrait {
+    width: 100%;
+  }
+
+  .about-founder-copy {
+    min-width: 0;
+  }
+
+  .about-founder-copy-inner {
+    padding: 0;
+    gap: 1rem;
+  }
+
+  .about-founder-copy-inner p,
+  .about-founder-link {
+    color: rgba(246, 240, 228, 0.76);
+    font-size: 1.02rem;
+    line-height: 1.85;
+  }
+
+  .about-founder-link {
+    display: inline-flex;
+    width: fit-content;
+    color: var(--gold);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .about-founder-link:hover,
+  .about-founder-link:focus-visible {
+    color: var(--cream);
   }
 
   .mentor-note {
@@ -1084,6 +1147,10 @@
     .hero-title {
       font-size: clamp(3rem, 11vw, 5rem);
     }
+
+    .about-founder-layout {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 768px) {
@@ -1128,8 +1195,14 @@
       padding: 0 1rem 2rem;
     }
 
-    .impact-media-band {
+    .impact-media-band,
+    .about-media-band,
+    .get-involved-media-band {
       padding: 0 1rem 2rem;
+    }
+
+    .about-founder-card {
+      width: min(100%, 240px);
     }
 
     .site-footer-meta {

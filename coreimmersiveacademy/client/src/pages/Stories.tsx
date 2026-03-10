@@ -29,22 +29,18 @@ export default function Stories() {
 
       <section className="site-section site-section-deep" ref={journeyRef}>
         <div className="container">
-          <div className="section-grid">
-            <div className="story-timeline">
-              {siteContent.pages.stories.beats.map((beat, index) => (
-                <div key={beat} className={`timeline-row reveal reveal-delay-${Math.min(index + 1, 4)}`}>
-                  <span className="timeline-index">{String(index + 1).padStart(2, "0")}</span>
-                  <p className={index >= 5 ? "timeline-copy timeline-copy-accent" : "timeline-copy"}>{beat}</p>
-                </div>
-              ))}
-            </div>
+          <div className="section-intro">
+            <SectionTag>{siteContent.pages.stories.hero.eyebrow}</SectionTag>
+            <h2 className="section-title reveal reveal-delay-1">{siteContent.pages.stories.journeyTitle}</h2>
+          </div>
 
-            <div className="story-card reveal reveal-delay-2">
-              <SectionTag>What Changes</SectionTag>
-              <p>
-                Technology no longer feels distant or inaccessible. It becomes a tool for creativity, a platform for self-expression, and a way to shape what comes next.
-              </p>
-            </div>
+          <div className="story-timeline">
+            {siteContent.pages.stories.beats.map((beat, index) => (
+              <div key={beat} className={`timeline-row reveal reveal-delay-${Math.min(index + 1, 4)}`}>
+                <span className="timeline-index">{String(index + 1).padStart(2, "0")}</span>
+                <p className={index === 4 ? "timeline-copy timeline-copy-accent" : "timeline-copy"}>{beat}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

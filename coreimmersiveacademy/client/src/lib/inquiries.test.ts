@@ -13,7 +13,7 @@ describe("getCollectionForInquiry", () => {
     const expectations: Array<[InquiryType, string]> = [
       ["community", "join_requests"],
       ["mentor", "mentor_applications"],
-      ["partner", "donations"],
+      ["partner", "join_requests"],
       ["support", "donations"],
     ];
 
@@ -64,6 +64,29 @@ describe("buildInquiryRecord", () => {
     });
 
     expect(buildInquiryRecord("community", data)).not.toHaveProperty("expertise");
+  });
+
+  it("builds a partner inquiry using the join request shape instead of the donation shape", () => {
+    const data: InquiryFormData = {
+      fullName: "Jordan Rivers",
+      email: "jordan@example.com",
+      organization: "Northside Youth Center",
+      phone: "555-0111",
+      organizationType: "Community Organization",
+      message: "We want to explore a partnership.",
+    };
+
+    expect(buildInquiryRecord("partner", data)).toMatchObject({
+      name: "Jordan Rivers",
+      email: "jordan@example.com",
+      school_org: "Northside Youth Center",
+      notes: "We want to explore a partnership.",
+      role: "partner",
+      organization_type: "Community Organization",
+      inquiry_type: "partner",
+    });
+
+    expect(buildInquiryRecord("partner", data)).not.toHaveProperty("type");
   });
 
   it("includes the legacy timestamp field so existing admin tooling can keep working", () => {

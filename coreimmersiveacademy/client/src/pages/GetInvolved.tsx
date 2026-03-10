@@ -1,5 +1,6 @@
 import PageLayout, { MediaAsset, SectionTag, useReveal } from "@/components/PageLayout";
 import { siteContent } from "@/content/siteContent";
+import { sendInquiryAutoReply } from "@/lib/emailConfirmation";
 import { type InquiryFormData, type InquiryType, submitInquiry } from "@/lib/inquiries";
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
@@ -30,6 +31,7 @@ function labelForInquiry(type: InquiryType) {
 }
 
 export default function GetInvolved() {
+  const heroRef = useReveal();
   const optionsRef = useReveal();
   const [activeForm, setActiveForm] = useState<InquiryType | null>(null);
   const [formData, setFormData] = useState<InquiryFormData>(emptyForm);
@@ -55,6 +57,13 @@ export default function GetInvolved() {
 
     try {
       await submitInquiry(activeForm, formData);
+      try {
+        await sendInquiryAutoReply({
+          email: formData.email.trim(),
+          name: formData.fullName.trim(),
+          type: activeForm,
+        });
+      } catch {}
       toast.success(`Thank you for your ${labelForInquiry(activeForm)}. We'll be in touch soon.`);
       setFormData(emptyForm);
       setActiveForm(null);
@@ -68,14 +77,16 @@ export default function GetInvolved() {
 
   return (
     <PageLayout>
-      <section className="page-hero page-hero-media">
-        <MediaAsset media={siteContent.pages.home.hero.media} height="100%" className="page-hero-background" priority />
-        <div className="page-hero-gradient" />
-        <div className="container page-hero-floating">
+      <section className="page-hero page-hero-soft page-hero-compact" ref={heroRef}>
+        <div className="container page-hero-floating page-hero-copy-centered">
           <SectionTag>Get Involved</SectionTag>
           <h1 className="page-title reveal reveal-delay-1">{siteContent.pages.getInvolved.title}</h1>
           <p className="page-intro reveal reveal-delay-2">{siteContent.pages.getInvolved.intro}</p>
         </div>
+      </section>
+
+      <section className="get-involved-media-band page-media-band-compact" data-get-involved-media="band">
+        <MediaAsset media={siteContent.pages.getInvolved.media} aspectRatio="21 / 8" className="get-involved-media-frame" priority />
       </section>
 
       <section className="site-section site-section-deep" ref={optionsRef}>
@@ -105,10 +116,6 @@ export default function GetInvolved() {
                   <SectionTag>{activeOption.eyebrow}</SectionTag>
                   <h2>{activeOption.title}</h2>
                   <p>{siteContent.pages.getInvolved.responseTime}</p>
-                </div>
-                <div className="mentor-note">
-                  <strong>{siteContent.people.mentorSpotlight.name}</strong>
-                  <span>{siteContent.people.mentorSpotlight.bio}</span>
                 </div>
               </div>
 

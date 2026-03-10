@@ -3,6 +3,21 @@ import { siteContent } from "@/content/siteContent";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
+const programEmailSubjects = new Set([
+  "Core Immersive Academy",
+  "Community Innovation Labs",
+  "Workshops & Events",
+]);
+
+function getProgramLearnMoreHref(programTitle: string) {
+  if (!programEmailSubjects.has(programTitle)) {
+    return null;
+  }
+
+  const subject = encodeURIComponent(`Interested in Learning More About ${programTitle}`);
+  return `mailto:paolo@coreimmersive.com?subject=${subject}`;
+}
+
 export default function Programs() {
   const heroRef = useReveal();
   const programsRef = useReveal();
@@ -27,27 +42,37 @@ export default function Programs() {
       <section className="site-section site-section-deep" ref={programsRef}>
         <div className="container">
           <div className="feature-grid feature-grid-2">
-            {siteContent.programs.map((program, index) => (
-              <div key={program.title} className={`program-slab reveal reveal-delay-${(index % 4) + 1}`}>
-                <div className="program-slab-header">
-                  <span className={`accent-pill accent-pill-${program.accent}`}>{program.eyebrow}</span>
-                  <h2>{program.title}</h2>
+            {siteContent.programs.map((program, index) => {
+              const learnMoreHref = getProgramLearnMoreHref(program.title);
+
+              return (
+                <div key={program.title} className={`program-slab reveal reveal-delay-${(index % 4) + 1}`}>
+                  <div className="program-slab-header">
+                    <span className={`accent-pill accent-pill-${program.accent}`}>{program.eyebrow}</span>
+                    <h2>{program.title}</h2>
+                  </div>
+                  <p>{program.description}</p>
+                  <div className="bullet-list bullet-list-tight">
+                    {program.bullets.map((bullet) => (
+                      <div key={bullet} className="bullet-item">
+                        {bullet}
+                      </div>
+                    ))}
+                  </div>
+                  {learnMoreHref ? (
+                    <a href={learnMoreHref} className="inline-link">
+                      Learn More <ArrowRight size={14} />
+                    </a>
+                  ) : (
+                    <Link href={program.href}>
+                      <span className="inline-link">
+                        Learn More <ArrowRight size={14} />
+                      </span>
+                    </Link>
+                  )}
                 </div>
-                <p>{program.description}</p>
-                <div className="bullet-list bullet-list-tight">
-                  {program.bullets.map((bullet) => (
-                    <div key={bullet} className="bullet-item">
-                      {bullet}
-                    </div>
-                  ))}
-                </div>
-                <Link href={program.href}>
-                  <span className="inline-link">
-                    Learn More <ArrowRight size={14} />
-                  </span>
-                </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

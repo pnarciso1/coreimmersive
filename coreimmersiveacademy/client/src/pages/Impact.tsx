@@ -13,15 +13,12 @@ export default function Impact() {
         <div className="container page-hero-floating page-hero-copy-centered">
           <SectionTag>Impact & Partners</SectionTag>
           <h1 className="page-title reveal reveal-delay-1">{siteContent.pages.impact.title}</h1>
-          <p className="page-intro reveal reveal-delay-2">
-            Core Immersive works with schools, universities, community organizations, and mission-driven institutions to bring emerging technology experiences to new audiences.
-          </p>
         </div>
       </section>
 
       <section className="impact-media-band page-media-band-compact" data-impact-media="band">
         <MediaAsset
-          media={siteContent.pages.home.problem.media}
+          media={siteContent.pages.impact.media}
           aspectRatio="21 / 8"
           className="impact-media-frame"
           priority
@@ -54,16 +51,13 @@ export default function Impact() {
         <div className="container">
           <div className="section-intro">
             <SectionTag>Partnership Opportunities</SectionTag>
-            <h2 className="section-title reveal reveal-delay-1">Core Immersive collaborates with mission-aligned institutions.</h2>
+            <h2 className="section-title reveal reveal-delay-1">Core Immersive collaborates with:</h2>
           </div>
 
           <div className="feature-grid feature-grid-3">
             {siteContent.pages.impact.partners.map((partner, index) => (
               <div key={partner} className={`feature-card reveal reveal-delay-${(index % 4) + 1}`}>
                 <h3>{partner}</h3>
-                <p>
-                  We design creative technology experiences that respond to the needs, audiences, and ambitions of each partner ecosystem.
-                </p>
               </div>
             ))}
           </div>
@@ -75,7 +69,10 @@ export default function Impact() {
           <div className="cta-band">
             <div className="cta-copy">
               <SectionTag>Why Support Core Immersive</SectionTag>
-              <h2 className="section-title reveal reveal-delay-1">Supporting Core Immersive helps expand opportunity.</h2>
+              <h2 className="section-title reveal reveal-delay-1">
+                Supporting Core Immersive helps expand opportunity and empower new creators.
+              </h2>
+              <p className="reveal reveal-delay-2">Your partnership helps:</p>
               <div className="bullet-list">
                 {siteContent.pages.impact.whySupport.map((item, index) => (
                   <div key={item} className={`bullet-item reveal reveal-delay-${Math.min(index + 2, 4)}`}>

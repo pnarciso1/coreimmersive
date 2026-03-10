@@ -33,11 +33,11 @@ const firestore = getFirestore(firebaseApp);
 
 export function getCollectionForInquiry(type: InquiryType): string {
   switch (type) {
+    case "partner":
     case "community":
       return "join_requests";
     case "mentor":
       return "mentor_applications";
-    case "partner":
     case "support":
       return "donations";
   }
@@ -61,10 +61,10 @@ export function buildInquiryRecord(type: InquiryType, data: InquiryFormData): Re
     });
   }
 
-  if (type === "community") {
+  if (type === "community" || type === "partner") {
     return compactRecord({
       ...base,
-      role: "community_partner",
+      role: type === "partner" ? "partner" : "community_partner",
       school_org: data.organization.trim(),
       organization_type: data.organizationType?.trim() ?? "",
       notes: data.message.trim(),
@@ -73,7 +73,7 @@ export function buildInquiryRecord(type: InquiryType, data: InquiryFormData): Re
 
   return compactRecord({
     ...base,
-    type: type === "partner" ? "partnership" : data.supportType?.trim() || "support",
+    type: data.supportType?.trim() || "support",
     message: data.message.trim(),
     organization_type: data.organizationType?.trim() ?? "",
   });

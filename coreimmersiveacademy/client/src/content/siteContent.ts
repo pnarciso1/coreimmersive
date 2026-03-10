@@ -1,6 +1,9 @@
 import creativeTechStudentsVideo from "@sitePublic/Images/Videos/CREATIVE_TECH_STUDENTS.mp4";
 import creativeChaosVideo from "@sitePublic/Images/Videos/Creative_Chaos.mp4";
 import digitalDivideVideo from "@sitePublic/Images/Videos/Digital_Divide.mp4";
+import founderVideo from "@sitePublic/Images/Videos/Founder.mp4";
+import getInvolvedVideo from "@sitePublic/Images/Videos/getinvolved.mp4";
+import partnerImpactVideo from "@sitePublic/Images/Videos/partner_impact.mp4";
 import studentJourneyVideo from "@sitePublic/Images/Videos/Student_Journey.mp4";
 import jamesPortrait from "@sitePublic/Images/James.jpeg";
 import paoloPortrait from "@sitePublic/Images/Paolo.png";
@@ -66,9 +69,11 @@ export const siteContent = {
       name: "Paolo Narciso",
       title: "Founder, Core Immersive",
       image: paoloPortrait,
+      linkedin: "https://www.linkedin.com/in/paolonarciso/",
       bio: [
-        "Paolo Narciso is an entrepreneur and educator whose work has focused on innovation, emerging technology, and expanding opportunity through education.",
-        "His vision for Core Immersive is simple: when people are given the right tools and support, they can build remarkable things.",
+        "Core Immersive was founded by Paolo Narciso, an entrepreneur and educator whose work has focused on innovation, emerging technology, and expanding opportunity through education.",
+        "His vision for Core Immersive is simple.",
+        "When people are given the right tools and support, they can build remarkable things.",
       ],
       quote: "When people are given the right tools and support, they can build remarkable things.",
     },
@@ -307,6 +312,13 @@ export const siteContent = {
     },
     impact: {
       title: "Expanding Access to Creative Technology",
+      media: {
+        kind: "video",
+        src: partnerImpactVideo,
+        alt: "Partners and communities engaging with creative technology experiences.",
+        label: "PARTNER_IMPACT",
+        objectPosition: "center center",
+      } satisfies MediaContent,
       challenge: [
         "Emerging technologies are shaping the future economy.",
         "Yet many students and communities lack access to the tools and learning experiences needed to participate.",
@@ -329,6 +341,7 @@ export const siteContent = {
     },
     stories: {
       title: "Every Creator Has a Story",
+      journeyTitle: "The Learner's Journey",
       hero: {
         eyebrow: "Student Journey",
         media: {
@@ -344,7 +357,7 @@ export const siteContent = {
         "They experiment with an AI tool.",
         "They create their first digital project.",
         "Something changes.",
-        "Technology no longer feels distant or inaccessible. It becomes a tool for creativity.",
+        "Technology no longer feels distant or inaccessible. It becomes a tool for creativity, a platform for self-expression, and a way to shape what comes next.",
         "A project becomes a portfolio.",
         "A curiosity becomes a career.",
         "A story becomes something that inspires others.",
@@ -352,11 +365,33 @@ export const siteContent = {
     },
     about: {
       title: "About Core Immersive",
+      media: {
+        kind: "video",
+        src: founderVideo,
+        alt: "Founder-led creative technology storytelling and community-building in motion.",
+        label: "FOUNDER",
+        objectPosition: "center center",
+      } satisfies MediaContent,
       mission: [
         "Core Immersive is a nonprofit dedicated to expanding access to creative technology.",
         "We believe emerging technologies like artificial intelligence, immersive media, and digital storytelling should be tools that empower people to express ideas and solve problems.",
         "Our programs help students, creators, and communities explore these technologies through hands-on creative experiences.",
       ],
+      join: {
+        eyebrow: "Join the Movement",
+        title: "Help more people create with confidence.",
+        body: [
+          "Across classrooms, community spaces, and creative labs, we see the same moment again and again.",
+          "Someone who once thought technology was out of reach realizes they can use it to build something of their own.",
+          "A student creates their first digital story.",
+          "An aspiring founder prototypes a new idea.",
+          "A community member uses technology to solve a local challenge.",
+          "Those moments are where confidence begins.",
+          "Core Immersive is building a growing community of educators, creators, partners, and supporters who believe creative technology should be accessible to everyone.",
+          "If you believe the future should be shaped by more voices, more ideas, and more creators, there is a place for you in this work.",
+        ],
+        action: { href: "/get-involved", label: "Get Involved", variant: "primary" } satisfies ActionLink,
+      },
       values: [
         {
           title: "Creative Agency",
@@ -382,6 +417,13 @@ export const siteContent = {
     },
     getInvolved: {
       title: "Join the Creative Technology Movement",
+      media: {
+        kind: "video",
+        src: getInvolvedVideo,
+        alt: "Students, mentors, and partners gathering around creative technology opportunities.",
+        label: "GET_INVOLVED",
+        objectPosition: "center center",
+      } satisfies MediaContent,
       intro:
         "There are many ways to support and participate in the Core Immersive mission. Find the path that's right for you.",
       responseTime: "Fill out the form below and we'll be in touch within 2–3 business days.",
