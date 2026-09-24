@@ -3,10 +3,11 @@ import { describe, expect, it } from "vitest";
 import { siteContent } from "./siteContent";
 
 describe("siteContent", () => {
-  it("defines the seven primary pages from the redesign brief", () => {
+  it("defines the primary pages from the redesign brief, including labs", () => {
     expect(siteContent.navLinks.map((link) => link.href)).toEqual([
       "/programs",
       "/creator-lab",
+      "/labs",
       "/impact",
       "/stories",
       "/about",
@@ -15,6 +16,7 @@ describe("siteContent", () => {
     expect(siteContent.pages.home.title).toBe("The Future Should Be Built By Everyone");
     expect(siteContent.pages.programs.title).toBe("Programs at Core Immersive");
     expect(siteContent.pages.creatorLab.title).toBe("Creator Lab");
+    expect(siteContent.pages.labs.title).toBe("Core Immersive Labs");
     expect(siteContent.pages.impact.title).toBe("Expanding Access to Creative Technology");
     expect(siteContent.pages.stories.title).toBe("Every Creator Has a Story");
     expect(siteContent.pages.about.title).toBe("About Core Immersive");
@@ -54,6 +56,12 @@ describe("siteContent", () => {
     expect(siteContent.pages.stories.journeyTitle).toBe("The Learner's Journey");
     expect(siteContent.pages.stories.beats[4]).toBe(
       "Technology no longer feels distant or inaccessible. It becomes a tool for creativity, a platform for self-expression, and a way to shape what comes next.",
+    );
+    expect(siteContent.pages.labs.officeHours.href).toBe(
+      "mailto:paolo@coreimmersive.com?subject=Interested%20in%20Labs%20Office%20Hours",
+    );
+    expect(siteContent.pages.labs.closing.action.href).toBe(
+      "mailto:paolo@coreimmersive.com?subject=Let's%20Talk%20About%20a%20Labs%20Project",
     );
   });
 });

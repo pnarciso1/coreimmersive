@@ -51,11 +51,20 @@ export function useReveal() {
 
 export function ActionButton({ action, small = false }: { action: ActionLink; small?: boolean }) {
   const className = `btn-${action.variant}${small ? " btn-small" : ""}`;
+  const isInternalLink = action.href.startsWith("/");
+
+  if (isInternalLink) {
+    return (
+      <Link href={action.href}>
+        <span className={className}>{action.label}</span>
+      </Link>
+    );
+  }
 
   return (
-    <Link href={action.href}>
-      <span className={className}>{action.label}</span>
-    </Link>
+    <a href={action.href} className={className}>
+      {action.label}
+    </a>
   );
 }
 

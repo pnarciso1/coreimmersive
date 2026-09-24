@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Programs from "./pages/Programs";
 import CreatorLab from "./pages/CreatorLab";
+import Labs from "./pages/Labs";
 import Impact from "./pages/Impact";
 import Stories from "./pages/Stories";
 import About from "./pages/About";
@@ -18,6 +19,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/programs"} component={Programs} />
       <Route path={"/creator-lab"} component={CreatorLab} />
+      <Route path={"/labs"} component={Labs} />
       <Route path={"/impact"} component={Impact} />
       <Route path={"/stories"} component={Stories} />
       <Route path={"/about"} component={About} />

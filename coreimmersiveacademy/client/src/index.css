@@ -614,6 +614,32 @@
     background: rgba(246, 240, 228, 0.08);
   }
 
+  .labs-stat-ribbon {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .labs-office-hours {
+    padding: 7.5rem 0 1.5rem;
+    background:
+      linear-gradient(180deg, rgba(8, 10, 16, 0.96), rgba(12, 13, 18, 0.9)),
+      radial-gradient(circle at top, rgba(80, 190, 185, 0.16), transparent 45%);
+  }
+
+  .labs-office-hours-band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(80, 190, 185, 0.22);
+    background: rgba(19, 24, 31, 0.9);
+    color: rgba(246, 240, 228, 0.82);
+  }
+
+  .labs-office-hours-band .inline-link {
+    flex-shrink: 0;
+  }
+
   .stat-pill,
   .feature-card,
   .program-slab,
@@ -1135,7 +1161,8 @@
     .form-surface-header,
     .field-grid,
     .site-footer-grid,
-    .stat-ribbon {
+    .stat-ribbon,
+    .labs-stat-ribbon {
       grid-template-columns: 1fr;
     }
 
@@ -1150,6 +1177,11 @@
 
     .about-founder-layout {
       grid-template-columns: 1fr;
+    }
+
+    .labs-office-hours-band {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 

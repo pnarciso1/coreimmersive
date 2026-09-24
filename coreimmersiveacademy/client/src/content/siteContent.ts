@@ -33,6 +33,10 @@ export interface InquiryOptionContent {
   eyebrow: string;
 }
 
+function createMailtoHref(email: string, subject: string) {
+  return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
+}
+
 export const siteContent = {
   brand: {
     name: "Core Immersive",
@@ -41,6 +45,7 @@ export const siteContent = {
   navLinks: [
     { label: "Programs", href: "/programs" },
     { label: "Creator Lab", href: "/creator-lab" },
+    { label: "Labs", href: "/labs" },
     { label: "Impact", href: "/impact" },
     { label: "Stories", href: "/stories" },
     { label: "About", href: "/about" },
@@ -53,6 +58,7 @@ export const siteContent = {
       { label: "Workshops & Events", href: "/programs" },
     ],
     organization: [
+      { label: "Labs", href: "/labs" },
       { label: "Impact & Partners", href: "/impact" },
       { label: "Stories", href: "/stories" },
       { label: "About", href: "/about" },
@@ -309,6 +315,152 @@ export const siteContent = {
         "Creative applications",
         "Technology-driven social impact ideas",
       ],
+    },
+    labs: {
+      title: "Core Immersive Labs",
+      eyebrow: "Core Immersive Labs",
+      subtitle: "Technology built for the mission.",
+      intro:
+        "Core Immersive Labs is the design and development studio of Core Immersive. We partner with nonprofits, schools, health organizations, and mission-driven founders to figure out what to build, build it well, and leave your team ready to own it.",
+      officeHours: {
+        copy: "Have a technology or AI question but not ready to start a project?",
+        href: createMailtoHref("paolo@coreimmersive.com", "Interested in Labs Office Hours"),
+        label: "Book a free Labs office hours session",
+      },
+      primaryAction: {
+        href: createMailtoHref("paolo@coreimmersive.com", "Interested in Core Immersive Labs"),
+        label: "Start a Conversation",
+        variant: "primary",
+      } satisfies ActionLink,
+      purpose: {
+        title: "Our Purpose",
+        statement:
+          "Help mission-driven organizations become confident technology leaders who understand the people they serve and build tools that last.",
+        pillars: [
+          {
+            title: "Confident Leaders",
+            description:
+              "We explain technology in plain language so your team can make good decisions, including the ones we're not in the room for.",
+          },
+          {
+            title: "Know the People You Serve",
+            description:
+              "Every project starts with the students, patients, caregivers, or families who will use it. We test assumptions early and build around real needs.",
+          },
+          {
+            title: "Tools That Last",
+            description:
+              "Clean architecture, tested code, and infrastructure sized to your budget. Technology your funders and partners can trust.",
+          },
+        ],
+      },
+      sections: [
+        {
+          number: "01",
+          title: "Build With Us",
+          intro:
+            "Think of Labs as a senior product team that joins yours for the life of the project. We (and our AI agents) write the code. The harder work sits around it: scoping honestly against a grant timeline, deciding what stays out of version one, and handing the product to your staff so it keeps running after we step back.",
+          offerings: [
+            {
+              title: "Full Product Team",
+              description:
+                "Engineers, designers, and product leads working alongside your staff, from architecture through launch.",
+            },
+            {
+              title: "AI-Accelerated Sprints",
+              description:
+                "A fixed monthly cost and AI-supported development workflows. Senior-quality work, delivered on a predictable schedule.",
+            },
+            {
+              title: "Pilot and MVP Builds",
+              description:
+                "Get a working product in front of a funder, school district, or hospital partner quickly, built so it can grow once the pilot proves out.",
+            },
+            {
+              title: "Immersive and Creative Experiences",
+              description:
+                "Interactive, visual, and immersive tools drawn from the same creative technology practice behind Core Immersive Academy.",
+            },
+          ],
+        },
+        {
+          number: "02",
+          title: "AI for Mission-Driven Organizations",
+          intro:
+            "Every organization is being asked what it's doing about AI. Some need a custom application: an intelligent intake tool, a resource-matching engine, an automation that frees staff from hours of manual reporting. Others need a clear-eyed look at the tools they already pay for and a plan to get their team using them. We do both, and we'll tell you which one fits.",
+          offerings: [
+            {
+              title: "AI Strategy and Readiness",
+              description:
+                "Find where AI helps your mission, where it doesn't, and what it takes to deploy it responsibly.",
+            },
+            {
+              title: "Workflow Automation",
+              description:
+                "Grant reporting, program data, volunteer coordination, intake. We automate the repetitive work so your people can focus on the people you serve.",
+            },
+            {
+              title: "Custom AI Applications",
+              description:
+                "Production-grade AI built for your use case, designed with the privacy and safety standards that work with children, patients, and families demands.",
+            },
+          ],
+        },
+        {
+          number: "03",
+          title: "Advisory",
+          intro:
+            "Many mission-driven leaders end up owning technology decisions they were never trained to make. We coach executive directors, founders, and program leads into confident technology leaders.",
+          offerings: [
+            {
+              title: "Fractional CTO",
+              description: "Technical leadership and architecture decisions without the cost of a full-time hire.",
+            },
+            {
+              title: "Leadership Coaching",
+              description: "One-on-one support for leaders stepping into technology ownership for the first time.",
+            },
+            {
+              title: "Hiring and Vendor Selection",
+              description:
+                "We help you define roles, vet candidates, review proposals, and choose partners with confidence.",
+            },
+            {
+              title: "Discovery Sprints",
+              description:
+                "A structured process to validate your idea, define the product, and build a roadmap before any code is written.",
+            },
+            {
+              title: "Ongoing Support",
+              description:
+                "Maintenance and technical support for your existing tools, managed by senior engineers.",
+            },
+            {
+              title: "Product Advisory",
+              description: "Roadmapping, user testing, and strategic guidance so you build the right thing first.",
+            },
+          ],
+        },
+      ],
+      stats: [
+        { value: "59", label: "Products Launched" },
+        { value: "16", label: "Leaders Coached" },
+        { value: "7", label: "AI Applications in Production" },
+        { value: "41", label: "Organizations Served (and counting)" },
+      ],
+      academySupport: {
+        title: "Every Project Supports the Academy",
+        body: "Revenue from Labs engagements helps fund Core Immersive Academy creative arts programs in schools and children's hospitals.",
+      },
+      closing: {
+        title: "Ready to build something that matters?",
+        body: "Let's talk about your project and find the right way to work together.",
+        action: {
+          href: createMailtoHref("paolo@coreimmersive.com", "Let's Talk About a Labs Project"),
+          label: "Let's Talk",
+          variant: "primary",
+        } satisfies ActionLink,
+      },
     },
     impact: {
       title: "Expanding Access to Creative Technology",

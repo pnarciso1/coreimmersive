@@ -6,6 +6,8 @@ import CreatorLab from "./CreatorLab";
 import GetInvolved from "./GetInvolved";
 import Home from "./Home";
 import Impact from "./Impact";
+import Labs from "./Labs";
+import Navbar from "@/components/Navbar";
 import Programs from "./Programs";
 import Stories from "./Stories";
 
@@ -19,6 +21,7 @@ describe("site pages", () => {
       renderToStaticMarkup(<Home />),
       renderToStaticMarkup(<Programs />),
       renderToStaticMarkup(<CreatorLab />),
+      renderToStaticMarkup(<Labs />),
       renderToStaticMarkup(<Impact />),
       renderToStaticMarkup(<Stories />),
       renderToStaticMarkup(<About />),
@@ -28,10 +31,29 @@ describe("site pages", () => {
     expect(pages).toContain("The Future Should Be Built By Everyone");
     expect(pages).toContain("Programs at Core Immersive");
     expect(pages).toContain("Creator Lab");
+    expect(pages).toContain("Core Immersive Labs");
     expect(pages).toContain("Expanding Access to Creative Technology");
     expect(pages).toContain("Every Creator Has a Story");
     expect(pages).toContain("About Core Immersive");
     expect(pages).toContain("Join the Creative Technology Movement");
+  });
+
+  it("renders labs in the primary navigation", () => {
+    const nav = renderToStaticMarkup(<Navbar />);
+
+    expect(nav).toContain("Labs");
+    expect(nav).toContain('href="/labs"');
+  });
+
+  it("renders the labs page with mission-specific calls to action", () => {
+    const labs = renderToStaticMarkup(<Labs />);
+
+    expect(labs).toContain("Technology built for the mission.");
+    expect(labs).toContain("Have a technology or AI question but not ready to start a project?");
+    expect(labs).toContain("59");
+    expect(labs).toContain("Organizations Served (and counting)");
+    expect(labs).toContain("mailto:paolo@coreimmersive.com?subject=Interested%20in%20Core%20Immersive%20Labs");
+    expect(labs).toContain("mailto:paolo@coreimmersive.com?subject=Let&#x27;s%20Talk%20About%20a%20Labs%20Project");
   });
 
   it("renders the provided video assets into the redesigned pages", () => {
