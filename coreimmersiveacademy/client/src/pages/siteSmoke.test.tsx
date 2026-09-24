@@ -54,6 +54,7 @@ describe("site pages", () => {
     expect(labs).toContain("Organizations Served (and counting)");
     expect(labs).toContain("https://calendly.com/paolo-coreimmersive/30min?month=2026-09");
     expect(labs).toContain("mailto:ContactUs@coreimmersive.com");
+    expect(labs).toContain("If your email app doesn&#x27;t open automatically, email us directly:");
   });
 
   it("renders the provided video assets into the redesigned pages", () => {

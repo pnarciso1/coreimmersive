@@ -2,6 +2,15 @@ import PageLayout, { ActionButton, SectionTag, useReveal } from "@/components/Pa
 import { siteContent } from "@/content/siteContent";
 import { ArrowRight } from "lucide-react";
 
+function LabsEmailFallback() {
+  return (
+    <div className="labs-email-fallback">
+      <span>If your email app doesn't open automatically, email us directly:</span>
+      <a href={`mailto:${siteContent.contact.primaryEmail}`}>{siteContent.contact.primaryEmail}</a>
+    </div>
+  );
+}
+
 export default function Labs() {
   const heroRef = useReveal();
   const purposeRef = useReveal();
@@ -35,6 +44,9 @@ export default function Labs() {
           <p className="page-intro reveal reveal-delay-3">{labs.intro}</p>
           <div className="reveal reveal-delay-4">
             <ActionButton action={labs.primaryAction} />
+          </div>
+          <div className="reveal reveal-delay-4">
+            <LabsEmailFallback />
           </div>
         </div>
       </section>
@@ -130,6 +142,7 @@ export default function Labs() {
             </div>
             <div className="cta-actions reveal reveal-delay-3">
               <ActionButton action={labs.closing.action} />
+              <LabsEmailFallback />
             </div>
           </div>
         </div>

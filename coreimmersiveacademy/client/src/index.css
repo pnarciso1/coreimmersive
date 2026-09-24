@@ -640,6 +640,23 @@
     flex-shrink: 0;
   }
 
+  .labs-email-fallback {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+    color: rgba(246, 240, 228, 0.62);
+    font-size: 0.92rem;
+    line-height: 1.7;
+  }
+
+  .labs-email-fallback a {
+    color: var(--cream);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+  }
+
   .stat-pill,
   .feature-card,
   .program-slab,
@@ -1182,6 +1199,10 @@
     .labs-office-hours-band {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .labs-email-fallback {
+      justify-content: flex-start;
     }
   }
 
