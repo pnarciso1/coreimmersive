@@ -52,8 +52,8 @@ describe("site pages", () => {
     expect(labs).toContain("Have a technology or AI question but not ready to start a project?");
     expect(labs).toContain("59");
     expect(labs).toContain("Organizations Served (and counting)");
-    expect(labs).toContain("mailto:paolo@coreimmersive.com?subject=Interested%20in%20Core%20Immersive%20Labs");
-    expect(labs).toContain("mailto:paolo@coreimmersive.com?subject=Let&#x27;s%20Talk%20About%20a%20Labs%20Project");
+    expect(labs).toContain("https://calendly.com/paolo-coreimmersive/30min?month=2026-09");
+    expect(labs).toContain("mailto:ContactUs@coreimmersive.com");
   });
 
   it("renders the provided video assets into the redesigned pages", () => {

@@ -33,10 +33,6 @@ export interface InquiryOptionContent {
   eyebrow: string;
 }
 
-function createMailtoHref(email: string, subject: string) {
-  return `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-}
-
 export const siteContent = {
   brand: {
     name: "Core Immersive",
@@ -324,11 +320,11 @@ export const siteContent = {
         "Core Immersive Labs is the design and development studio of Core Immersive. We partner with nonprofits, schools, health organizations, and mission-driven founders to figure out what to build, build it well, and leave your team ready to own it.",
       officeHours: {
         copy: "Have a technology or AI question but not ready to start a project?",
-        href: createMailtoHref("paolo@coreimmersive.com", "Interested in Labs Office Hours"),
+        href: "https://calendly.com/paolo-coreimmersive/30min?month=2026-09",
         label: "Book a free Labs office hours session",
       },
       primaryAction: {
-        href: createMailtoHref("paolo@coreimmersive.com", "Interested in Core Immersive Labs"),
+        href: "mailto:ContactUs@coreimmersive.com",
         label: "Start a Conversation",
         variant: "primary",
       } satisfies ActionLink,
@@ -456,7 +452,7 @@ export const siteContent = {
         title: "Ready to build something that matters?",
         body: "Let's talk about your project and find the right way to work together.",
         action: {
-          href: createMailtoHref("paolo@coreimmersive.com", "Let's Talk About a Labs Project"),
+          href: "mailto:ContactUs@coreimmersive.com",
           label: "Let's Talk",
           variant: "primary",
         } satisfies ActionLink,

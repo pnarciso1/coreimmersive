@@ -58,10 +58,11 @@ describe("siteContent", () => {
       "Technology no longer feels distant or inaccessible. It becomes a tool for creativity, a platform for self-expression, and a way to shape what comes next.",
     );
     expect(siteContent.pages.labs.officeHours.href).toBe(
-      "mailto:paolo@coreimmersive.com?subject=Interested%20in%20Labs%20Office%20Hours",
+      "https://calendly.com/paolo-coreimmersive/30min?month=2026-09",
     );
+    expect(siteContent.pages.labs.primaryAction.href).toBe("mailto:ContactUs@coreimmersive.com");
     expect(siteContent.pages.labs.closing.action.href).toBe(
-      "mailto:paolo@coreimmersive.com?subject=Let's%20Talk%20About%20a%20Labs%20Project",
+      "mailto:ContactUs@coreimmersive.com",
     );
   });
 });
